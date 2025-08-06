@@ -9,7 +9,7 @@ rfe_selector = joblib.load("rfe_selector.pkl")
 # ✅ Full original feature set used *before* RFE during training
 # Copy these from X_train.columns (used before applying RFE)
 all_features = [
-    ['automaker_Bajaj Auto', 'automaker_Hero MotoCorp', 'automaker_Honda',
+    'automaker_Bajaj Auto', 'automaker_Hero MotoCorp', 'automaker_Honda',
        'automaker_Hyundai', 'automaker_Kia', 'automaker_Mahindra',
        'automaker_Maruti Suzuki', 'automaker_Renault',
        'automaker_Royal Enfield', 'automaker_Suzuki Motorcycle',
@@ -31,7 +31,7 @@ all_features = [
        'pv_sales', 'tw_sales', 'pv_entry_level_sales', 'pv_premium_sales',
        'pv_export_sales', 'tw_export_sales', 'rural_demand_index', 'repo_rate',
        'inflation_rate', 'consumer_confidence_index', 'inventory_level',
-       'monsoon_index', 'gdp_growth', 'month', 'year']
+       'monsoon_index', 'gdp_growth', 'month', 'year'
 ]
 
 # Streamlit UI
