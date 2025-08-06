@@ -48,7 +48,7 @@ input_data = {}
 for feature in all_features:
     if feature in ['month', 'year']:
         input_data[feature] = st.number_input(f"{feature}", min_value=1, step=1, format="%d")
-    elif feature.startswith("automaker_") or feature.startswith("vehicle_type_"):
+    elif str(feature).startswith("automaker_") or str(feature).startswith("vehicle_type_"):
         input_data[feature] = st.selectbox(f"{feature}", [0, 1], index=0)
     else:
         input_data[feature] = st.number_input(f"{feature}", value=0.0)
