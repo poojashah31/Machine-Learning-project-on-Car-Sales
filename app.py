@@ -9,11 +9,7 @@ rfe_selector = joblib.load("rfe_selector.pkl")
 # ✅ All features originally used before RFE
 # These must match the training data feature names and order
 all_features = [
-    'automaker_Honda', 'automaker_Royal Enfield',
-    'vehicle_type_Passenger Vehicle', 'pv_sales', 'pv_premium_sales',
-    'pv_export_sales', 'tw_export_sales', 'repo_rate', 'inflation_rate',
-    'consumer_confidence_index', 'inventory_level', 'monsoon_index',
-    'gdp_growth', 'month', 'year'
+   'automaker_Honda', 'automaker_Royal Enfield', 'vehicle_type_Passenger Vehicle', 'pv_sales', 'pv_premium_sales', 'pv_export_sales', 'tw_export_sales', 'repo_rate', 'inflation_rate', 'consumer_confidence_index', 'inventory_level', 'monsoon_index', 'gdp_growth', 'month', 'year'
 ]
 
 # 🧠 Streamlit UI Setup
