@@ -9,15 +9,29 @@ rfe_selector = joblib.load("rfe_selector.pkl")
 # ✅ Full original feature set used *before* RFE during training
 # Copy these from X_train.columns (used before applying RFE)
 all_features = [
-    'automaker_Bajaj Auto', 'automaker_Hero MotoCorp', 'automaker_Honda',
-    'automaker_Hyundai', 'automaker_Kia', 'automaker_Mahindra',
-    'automaker_Maruti Suzuki', 'automaker_Renault', 'automaker_Royal Enfield',
-    'automaker_Suzuki Motorcycle', 'automaker_Tata Motors',
-    'automaker_TVS Motor', 'automaker_Toyota', 'automaker_Yamaha',
-    'vehicle_type_Passenger Vehicle', 'vehicle_type_Two Wheeler',
-    'pv_sales', 'pv_premium_sales', 'pv_export_sales', 'tw_export_sales',
-    'repo_rate', 'inflation_rate', 'consumer_confidence_index',
-    'inventory_level', 'monsoon_index', 'gdp_growth', 'month', 'year'
+    ['automaker_Bajaj Auto', 'automaker_Hero MotoCorp', 'automaker_Honda',
+       'automaker_Hyundai', 'automaker_Kia', 'automaker_Mahindra',
+       'automaker_Maruti Suzuki', 'automaker_Renault',
+       'automaker_Royal Enfield', 'automaker_Suzuki Motorcycle',
+       'automaker_TVS Motor', 'automaker_Tata Motors', 'automaker_Toyota',
+       'automaker_Yamaha', 'region_Andaman & Nicobar', 'region_Andhra Pradesh',
+       'region_Arunachal Pradesh', 'region_Assam', 'region_Bihar',
+       'region_Chandigarh', 'region_Chhattisgarh',
+       'region_Dadra & Nagar Haveli and Daman & Diu', 'region_Delhi',
+       'region_Goa', 'region_Gujarat', 'region_Haryana',
+       'region_Himachal Pradesh', 'region_Jammu & Kashmir', 'region_Jharkhand',
+       'region_Karnataka', 'region_Kerala', 'region_Ladakh',
+       'region_Lakshadweep', 'region_Madhya Pradesh', 'region_Maharashtra',
+       'region_Manipur', 'region_Meghalaya', 'region_Mizoram',
+       'region_Nagaland', 'region_Odisha', 'region_Puducherry',
+       'region_Punjab', 'region_Rajasthan', 'region_Sikkim',
+       'region_Tamil Nadu', 'region_Telangana', 'region_Tripura',
+       'region_Uttar Pradesh', 'region_Uttarakhand', 'region_West Bengal',
+       'vehicle_type_Passenger Vehicle', 'vehicle_type_Two-Wheeler',
+       'pv_sales', 'tw_sales', 'pv_entry_level_sales', 'pv_premium_sales',
+       'pv_export_sales', 'tw_export_sales', 'rural_demand_index', 'repo_rate',
+       'inflation_rate', 'consumer_confidence_index', 'inventory_level',
+       'monsoon_index', 'gdp_growth', 'month', 'year']
 ]
 
 # Streamlit UI
