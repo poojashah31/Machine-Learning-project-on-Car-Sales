@@ -6,26 +6,27 @@ import joblib
 lasso_model = joblib.load("lasso_model.pkl")
 rfe_selector = joblib.load("rfe_selector.pkl")
 
-# ✅ Use the full original feature list (before RFE)
-# These should exactly match the training set column names used before RFE
+# ✅ Full original feature set used *before* RFE during training
+# Copy these from X_train.columns (used before applying RFE)
 all_features = [
-    'automaker_Honda', 'automaker_Royal Enfield', 'automaker_Bajaj Auto',
-    'automaker_Hero MotoCorp', 'automaker_Hyundai', 'automaker_Kia',
-    'automaker_Mahindra', 'automaker_Maruti Suzuki', 'automaker_Tata',
-    'automaker_TVS Motor', 'vehicle_type_Passenger Vehicle',
-    'vehicle_type_Two Wheeler', 'pv_sales', 'pv_premium_sales',
-    'pv_export_sales', 'tw_export_sales', 'repo_rate', 'inflation_rate',
-    'consumer_confidence_index', 'inventory_level', 'monsoon_index',
-    'gdp_growth', 'month', 'year'
+    'automaker_Bajaj Auto', 'automaker_Hero MotoCorp', 'automaker_Honda',
+    'automaker_Hyundai', 'automaker_Kia', 'automaker_Mahindra',
+    'automaker_Maruti Suzuki', 'automaker_Renault', 'automaker_Royal Enfield',
+    'automaker_Suzuki Motorcycle', 'automaker_Tata Motors',
+    'automaker_TVS Motor', 'automaker_Toyota', 'automaker_Yamaha',
+    'vehicle_type_Passenger Vehicle', 'vehicle_type_Two Wheeler',
+    'pv_sales', 'pv_premium_sales', 'pv_export_sales', 'tw_export_sales',
+    'repo_rate', 'inflation_rate', 'consumer_confidence_index',
+    'inventory_level', 'monsoon_index', 'gdp_growth', 'month', 'year'
 ]
 
 # Streamlit UI
-st.set_page_config(page_title="Car Sales Decline Prediction", layout="centered")
+st.set_page_config(page_title="Car Sales Decline Predictor", layout="centered")
 st.title("🚗 Car Sales Decline Predictor")
 
 st.markdown("""
-Predict the expected percentage change in car sales using automotive, economic, and seasonal indicators.
-Fill in the inputs below:
+Enter values for each feature below to predict the expected decline in car sales.
+Use appropriate values for one-hot encoded automakers and vehicle type (e.g., 1 or 0).
 """)
 
 # Collect input values
@@ -33,13 +34,15 @@ input_data = {}
 for feature in all_features:
     if feature in ['month', 'year']:
         input_data[feature] = st.number_input(f"{feature}", min_value=1, step=1, format="%d")
+    elif feature.startswith("automaker_") or feature.startswith("vehicle_type_"):
+        input_data[feature] = st.selectbox(f"{feature}", [0, 1], index=0)
     else:
         input_data[feature] = st.number_input(f"{feature}", value=0.0)
 
 # Convert to DataFrame
 input_df = pd.DataFrame([input_data])
 
-# Apply RFE to select only the features used in training
+# Apply RFE to select required features
 try:
     input_rfe = rfe_selector.transform(input_df)
 except Exception as e:
